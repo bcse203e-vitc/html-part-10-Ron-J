@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" name="size" value="1"> <label>Small</label><br>
+    <input type="radio" name="size" value="2"> <label>Medium</label><br>
+    <input type="radio" name="size" value="3"> <label>Large</label><br>
+    <input type="checkbox" value="1" id="cheese"> <label>Cheese</label><br>
+    <input type="checkbox" value="1" id="pepperoni"> <label>Pepperoni</label><br>
+    <input type="checkbox" value="1" id="mushrooms"> <label>Mushroom</label><br>
+    <input type="checkbox" value="1" id="olives"> <label>Olives</label><br>
+    <button id="submit">Submit</button>
+    <p id="size"></p>
+    <p id="toppings"></p>
+    <script>
+        document.getElementById("submit").onclick=function(){
+            let sizeElements = document.getElementsByName("size");
+            let selectedSize;
+            for (let i = 0; i < sizeElements.length; i++) {
+                if (sizeElements[i].checked) {
+                    selectedSize = sizeElements[i].value;
+                    break;
+                }
+            }
+
+            let O1 = document.getElementById("size");
+            let O2 = document.getElementById("toppings");
+            O1.innerHTML = "";
+            O2.innerHTML = "Toppings: ";
+
+            switch(selectedSize){
+                case "1": O1.textContent = "Size: Small"; break;
+                case "2": O1.textContent = "Size: Medium"; break;
+                case "3": O1.textContent = "Size: Large"; break;
+                default: O1.textContent = "Invalid";
+            }
+
+            if(document.getElementById("cheese").checked){
+                O2.innerHTML += "Cheese, ";
+            }
+            if(document.getElementById("pepperoni").checked){
+                O2.innerHTML += "Pepperoni, ";
+            }
+            if(document.getElementById("mushrooms").checked){
+                O2.innerHTML += "Mushrooms, ";
+            }
+            if(document.getElementById("olives").checked){
+                O2.innerHTML += "Olives, ";
+            }
+        }
+    </script>
+</body>
+</html>
